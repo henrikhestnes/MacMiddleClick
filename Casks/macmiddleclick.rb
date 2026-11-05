@@ -1,6 +1,6 @@
 cask "macmiddleclick" do
-  version "1.0.0"
-  sha256 "32186833282a624a033b60e0b118feb34f931bf8dc4834bf6939c995ccab1be9"
+  version "1.0.1"
+  sha256 "d4f095287f3f92125951da369d9ec4dec80e4962531c2f19e7da64d740135bce"
 
   url "https://github.com/henrikhestnes/MacMiddleClick/releases/download/v#{version}/MacMiddleClick.zip"
   name "MacMiddleClick"
