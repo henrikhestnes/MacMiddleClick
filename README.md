@@ -26,7 +26,7 @@ MacMiddleClick turns on **Launch at Login** the first time it runs. Turn it off 
 
 On first launch, macOS asks for **Accessibility** access, which MacMiddleClick needs to turn clicks into middle clicks. Enable it in **System Settings → Privacy & Security → Accessibility**. MacMiddleClick picks the permission up within two seconds, without a relaunch.
 
-Releases are signed with the same self-signed "MacSnip Release" certificate as MacSnip, so the permission carries over to upgrades. Builds from source are ad-hoc signed unless that certificate is in your keychain, and macOS treats every ad-hoc rebuild as a new app and silently stops honoring the permission. After rebuilding, remove MacMiddleClick from that list (−), add it again, and relaunch. To avoid this, sign with a stable certificate: `SIGN_IDENTITY="Apple Development: …" ./scripts/build.sh`.
+Releases are signed with the same self-signed "MacSnip Release" certificate as MacSnip, so the permission carries over to upgrades. Every build uses the hardened runtime, which stops other processes from injecting code into an app that holds this permission. Builds from source are ad-hoc signed unless that certificate is in your keychain, and macOS treats every ad-hoc rebuild as a new app and silently stops honoring the permission. After rebuilding, remove MacMiddleClick from that list (−), add it again, and relaunch. To avoid this, sign with a stable certificate: `SIGN_IDENTITY="Apple Development: …" ./scripts/build.sh`.
 
 ## Menu
 

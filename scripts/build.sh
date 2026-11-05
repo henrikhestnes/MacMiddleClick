@@ -31,7 +31,9 @@ mv -f "$app/Contents/MacOS/MacMiddleClick.new" "$app/Contents/MacOS/MacMiddleCli
 cp Resources/Info.plist "$app/Contents/Info.plist"
 swift scripts/make-icon.swift "$PWD/dist"
 cp "$PWD/dist/AppIcon.icns" "$app/Contents/Resources/AppIcon.icns"
-codesign --force --sign "$identity" --identifier io.macmiddleclick.app "$app"
+# The hardened runtime enables library validation and ignores DYLD_* variables, so another process
+# cannot inject code into an app that holds Accessibility access. It works with any signature.
+codesign --force --options runtime --sign "$identity" --identifier io.macmiddleclick.app "$app"
 rm -f "$PWD/dist/MacMiddleClick.zip"
 ditto -c -k --sequesterRsrc --keepParent "$app" "$PWD/dist/MacMiddleClick.zip"
 echo "Built: $app"
